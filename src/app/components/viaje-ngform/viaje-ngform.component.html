@@ -1,0 +1,75 @@
+<div class="container">
+    <!-- #viajeForm: variable dentro del template que tienen el contenido del objeto formGroup -->
+    <!-- ngSubmit: es el evento de salida de la directiva ngForm que se provoca al hacer submit sobre el formulario-->
+    <form #viajeForm=ngForm (ngSubmit)="guardar(viajeForm.value)">
+        <div class="row">
+            <div class="field-element">
+                <label for="">Nombre del viaje</label>
+                <!-- name: nombre de la propiedad que se generara en el form para el campo -->
+                <!-- ngModel: crea un formControl dentro del formulario y ademas crea una propiedad en el obj del formulario con el nombre definido en el atributo name del input-->
+                <!-- [(ngModel)]: Canal de entrada salida two-way data binding-->
+                <!-- #nombreDelViaje="ngModel": generamos una variable que contine el formcontrol que genera ngmodel -->
+                <input type="text" required [ngModel]="viaje.tripName" name="tripName" #nombre="ngModel">
+                <!-- Pristine: es que no has tocado el input -->
+                <!-- nombreDel.valid==false || nombreDel.pristine==false : si son false se muestra -->
+                <div [hidden]="nombre.valid || nombre.pristine" class="error">Nombre del viaje obligatorio</div>
+            </div>
+            <div class="field-element">
+                <label for="">Tipo de viaje</label>
+                <select required [ngModel]="viaje.tripType" name="tripType" #tipodeViaje="ngModel" >
+                    <option *ngFor="let item of tiposDeViajes" [value]="item.id">{{item.value}}</option>
+                </select>
+            </div>
+            <div class="field-element">
+                <label for="">Destino</label>
+                <input type="text" required [ngModel]="viaje.tripDestination" name="tripDestination" #destino="ngModel">
+                <div [hidden]="destino.valid || destino.pristine" class="error">destino del viaje obligatorio</div>
+            </div>
+            <div class="field-element">
+                <label for="">Duracion</label>
+                <input type="number" required [ngModel]="viaje.tripDuration" name="tripDuration" #duracion="ngModel">
+                <div [hidden]="duracion.valid || duracion.pristine" class="error">duracion del viaje obligatorio</div>
+            </div>
+            <div class="field-element">
+                <label for="">Plazas</label>
+                <input type="number" required [ngModel]="viaje.plazas" name="plazas" #plazas="ngModel">
+                <div [hidden]="plazas.valid || plazas.pristine" class="error">plazas del viaje obligatorio</div>
+            </div>
+            <div class="field-element">
+                <label for="">Visible</label>
+                <select  [ngModel]="viaje.isVisible" name="isVisible" #visible="ngModel" >
+                    <option value="true">Si</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+            <div class="field-element">
+                <label for="">Visible</label>
+                <input type="checkbox" [ngModel]="viaje.isVisible" name="isVisible">
+            </div>
+            <!-- <div class="field-element">
+                <label for="">Estado</label>
+                <select required [(ngModel)]="viaje.estado" name="estadodelViaje" #estado="ngModel" >
+                    <option *ngFor="let tipo of viajeValue" [value]="tipo">{{viajeEstado[tipo]}}</option>
+                </select>
+            </div> -->
+            <div class="field-element">
+                <label for="">Estado</label>
+                <select required [ngModel]="viaje.estado" name="estado" #estado="ngModel" >
+                    <option *ngFor="let tipo of estados" [value]="tipo.id">{{tipo.value}}</option>
+                </select>
+            </div>
+            <!-- <div class="field-element">
+                <label>Estado</label>
+                <select [(ngModel)]="viaje.estado" name="estado">
+                    <option></option>
+                    <option *ngFor="let item of viajeEstado | keyvalue" [value]="item.value">{{item.key}}</option>
+                </select>
+            </div> -->
+        </div>
+        <div class="row-reverse">
+            <button class="btn pimary" type="submit" [disabled]="!viajeForm.valid">Guardar</button>
+            <!-- <button class="btn" type="button">Nuevo viaje</button> -->
+        </div>
+    </form>
+    <p>formulario: {{viajeForm.valid}}</p>
+</div>

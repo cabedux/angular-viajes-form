@@ -1,0 +1,52 @@
+<div class="container">
+    <h1>Formulario reactivo</h1>
+    <form [formGroup]="elFormulario" (ngSubmit)="guardar(elFormulario.value)">
+        <div class="row">
+            <div class="field-element">
+                <label for="">Nombre del viaje</label>
+                <input type="text" formControlName="tripName">
+                <!-- <div [hidden]="nombre.valid || nombre.pristine" class="error">Nombre del viaje obligatorio</div> -->
+            </div>
+            <div class="field-element">
+                <label for="">Destino</label>
+                <input type="text" formControlName="tripDestination">
+                <!-- <div [hidden]="destino.valid || destino.pristine" class="error">destino del viaje obligatorio</div> -->
+            </div>
+            <div class="field-element">
+                <label for="">Duracion</label>
+                <input type="number" formControlName="tripDuration">
+                <!-- <div [hidden]="duracion.valid || duracion.pristine" class="error">duracion del viaje obligatorio</div> -->
+            </div>
+            <div class="field-element">
+                <label for="">Plazas</label>
+                <input type="number" formControlName="plazas">
+                <!-- <div [hidden]="plazas.valid || plazas.pristine" class="error">plazas del viaje obligatorio</div> -->
+            </div>
+            <div class="field-element">
+                <label for="">Tipo de viaje</label>
+                <select formControlName="tripType">
+                    <option *ngFor="let item of tiposDeViajes" [value]="item.id">{{item.value}}</option>
+                </select>
+            </div>
+            <div class="field-element">
+                <label for="">Visible</label>
+                <select formControlName="isVisible">
+                    <option value="true">Si</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+            <div class="field-element">
+                <label for="">Estado</label>
+                <select formControlName="estado">
+                    <option></option>
+                    <option *ngFor="let tipo of estados" [value]="tipo.id">{{tipo.value}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row-reverse">
+            <button class="btn primary" type="submit" [disabled]="!elFormulario.valid">Guardar</button>
+            <!-- <button class="btn" type="button">Nuevo viaje</button> -->
+        </div>
+    </form>
+    <p>formulario: {{elFormulario.valid}}</p>
+</div>
