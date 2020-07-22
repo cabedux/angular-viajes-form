@@ -1,5 +1,5 @@
-<app-viaje-ngform [viaje]="viaje" [estados]="estados" [tiposDeViajes]="tiposDeViajes"  (viajeChanged)="guardar($event)"></app-viaje-ngform>
+<!-- <app-viaje-ngform [viaje]="viaje" [estados]="estados" [tiposDeViajes]="tiposDeViajes"  (viajeChanged)="guardar($event)"></app-viaje-ngform> -->
 
 <app-viaje-reactive-form [viaje]="viaje" [estados]="estados" [tiposDeViajes]="tiposDeViajes" (viajeChanged)="guardar($event)"></app-viaje-reactive-form>
 
-<app-viaje-listado [viajes]="viajes" [estados]="estados" [tiposDeViajes]="tiposDeViajes" (viajeClick)="cargarViajeById($event)"></app-viaje-listado>
+<app-viaje-listado [viajes]="viajes" (viajeClick)="cargarViajeById($event)"></app-viaje-listado>

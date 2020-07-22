@@ -10,7 +10,9 @@
             <div class="field-element">
                 <label for="">Destino</label>
                 <input type="text" formControlName="tripDestination">
-                <!-- <div [hidden]="destino.valid || destino.pristine" class="error">destino del viaje obligatorio</div> -->
+                <div class="error" *ngIf="elFormulario.controls.tripDestination.hasError('destinoNoValido')">
+                    El destino no es valido
+                </div>
             </div>
             <div class="field-element">
                 <label for="">Duracion</label>
@@ -25,7 +27,7 @@
             <div class="field-element">
                 <label for="">Tipo de viaje</label>
                 <select formControlName="tripType">
-                    <option *ngFor="let item of tiposDeViajes" [value]="item.id">{{item.value}}</option>
+                    <option *ngFor="let item of tiposDeViajes" [value]="item.id">{{item.id | tipo}}</option>
                 </select>
             </div>
             <div class="field-element">
@@ -39,12 +41,13 @@
                 <label for="">Estado</label>
                 <select formControlName="estado">
                     <option></option>
-                    <option *ngFor="let tipo of estados" [value]="tipo.id">{{tipo.value}}</option>
+                    <option *ngFor="let tipo of estados" [value]="tipo.id">{{tipo.id | estado }}</option>
                 </select>
             </div>
         </div>
         <div class="row-reverse">
             <button class="btn primary" type="submit" [disabled]="!elFormulario.valid">Guardar</button>
+            <button class="btn" type="button" (click)="nuevoViaje()">Nuevo</button>
             <!-- <button class="btn" type="button">Nuevo viaje</button> -->
         </div>
     </form>

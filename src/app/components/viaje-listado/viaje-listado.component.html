@@ -11,20 +11,23 @@
                     <th scope="col">Duracion</th>
                     <th scope="col">Plazas</th>
                     <th scope="col">Estado</th>
+                    <th scope="col">Fecha</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let viaje of viajes; let i = index"  (click)="setViaje(i)">
-                    <th scope="row">#{{i+1}}</th>
+                  <tr *ngFor="let viaje of viajes"  (click)="setViaje(viaje)">
+                    <th scope="row">#{{viaje.id}}</th>
                     <td>{{viaje.tripName}}</td>
-                    <td>{{tiposDeViajes[viaje.tripType - 1].value}}</td>
+                    <td>{{viaje.tripType | tipo}}</td>
                     <td>{{viaje.tripDestination}}</td>
                     <td>{{viaje.tripDuration}}</td>
                     <td>{{viaje.plazas}}</td>
-                    <td>{{estados[viaje.estado - 1].value}}</td>
+                    <td>{{viaje.estado | estado}}</td>
+                    <td>{{viaje.fechaDeSalida | date: 'fullDate' :'':'es' | uppercase}}</td>
                   </tr>
                 </tbody>
             </table>
+            <p>{{viajes.length}} viajes</p>
         </div>
     </div>
 </div>    

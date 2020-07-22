@@ -15,7 +15,7 @@ export enum ViajeTipo{
 }
 
 export class Viaje{
-    id?: number;
+    id: string;
     tripName: string;
     tripType: ViajeTipo;
     tripDestination: string;
@@ -23,8 +23,10 @@ export class Viaje{
     plazas?: number;
     isVisible: boolean;
     estado: ViajeEstado;
+    fechaDeSalida: Date;
 
     constructor(item?: any){
+        this.id = item?.id || '';
         this.tripName = item?.tripName || '';
         this.tripType = item?.tripType || ViajeTipo.Relax;
         this.tripDestination = item?.tripDestination || '';
@@ -32,5 +34,6 @@ export class Viaje{
         this.plazas = item?.plazas || 0;
         this.isVisible = item && item.isVisible != null ? item.isVisible : true;
         this.estado = item?.estado || ViajeEstado.Abierto;
+        this.fechaDeSalida = item?.fechaDeSalida ? new Date(item.fechaDeSalida) : null;
     }
 }
