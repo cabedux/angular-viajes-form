@@ -11,6 +11,7 @@ export class ViajeListadoComponent implements OnInit {
   @Input() viajes: Viaje[] = [];
 
   @Output() viajeClick = new EventEmitter<string>(false);
+  @Output() deleteViajeClick = new EventEmitter<string>(false);
 
   constructor() { }
 
@@ -19,5 +20,9 @@ export class ViajeListadoComponent implements OnInit {
 
   setViaje(viaje: Viaje): void {
     this.viajeClick.emit(viaje.id);
+  }
+
+  deleteViaje(id: string): void{
+    this.deleteViajeClick.emit(id);
   }
 }

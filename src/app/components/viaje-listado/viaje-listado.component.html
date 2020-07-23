@@ -12,6 +12,7 @@
                     <th scope="col">Plazas</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Fecha</th>
+                    <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -24,6 +25,7 @@
                     <td>{{viaje.plazas}}</td>
                     <td>{{viaje.estado | estado}}</td>
                     <td>{{viaje.fechaDeSalida | date: 'fullDate' :'':'es' | uppercase}}</td>
+                    <td><button type="button" (click)="deleteViaje(viaje.id)">Delete</button></td>
                   </tr>
                 </tbody>
             </table>

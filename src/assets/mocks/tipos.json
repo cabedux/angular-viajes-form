@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "value": "Playa"
+    },
+    {
+        "id": 2,
+        "value": "Relax"
+    },
+    {
+        "id": 3,
+        "value": "Deportivo"
+    },
+    {
+        "id": 4,
+        "value": "Rural"
+    },
+    {
+        "id": 5,
+        "value": "Cultural"
+    },
+    {
+        "id": 6,
+        "value": "Ocio"
+    }
+]

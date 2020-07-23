@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "value": "Abierto hasta el amanacer"
+    },
+    {
+        "id": 3,
+        "value": "Cancelado por inclemencias"
+    },
+    {
+        "id": 2,
+        "value": "Completado el aforo"
+    },
+    {
+        "id": 4,
+        "value": "Postpuesto hasta nuevo aviso"
+    }
+]

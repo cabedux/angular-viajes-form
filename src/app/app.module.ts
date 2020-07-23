@@ -11,6 +11,7 @@ import { EstadoPipe } from './pipes/estado.pipe';
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { TipoPipe } from './pipes/tipo.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(localeEs, 'es');
 
@@ -26,7 +27,8 @@ registerLocaleData(localeEs, 'es');
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     ViajesService,

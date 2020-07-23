@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
   styleUrls: ['./viaje-reactive-form.component.scss']
 })
 export class ViajeReactiveFormComponent implements OnInit, OnChanges{
-   
+
   /*
    * Input de un objeto de tipo viaje
    */
