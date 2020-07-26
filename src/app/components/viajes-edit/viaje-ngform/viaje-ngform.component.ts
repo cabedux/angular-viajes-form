@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Viaje } from '../../models/viaje';
-import { IdValue } from '../../models/id-value';
+import { Viaje } from 'src/app/models/viaje';
+import { IdValue } from 'src/app/models/id-value';
 
 @Component({
   selector: 'app-viaje-ngform',

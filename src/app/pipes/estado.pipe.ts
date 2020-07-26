@@ -17,7 +17,7 @@ export class EstadoPipe implements PipeTransform {
       case ViajeEstado.Postpuesto:
         return 'Cancelado hasta nuevo aviso';
       default:
-        return 'Sin estado';
+        return 'Estado desconocido';
     }
   }
 

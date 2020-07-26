@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { Viaje, ViajeTipo } from '../../models/viaje';
-import { IdValue } from '../../models/id-value';
+import { Viaje, ViajeTipo } from 'src/app/models/viaje';
+import { IdValue } from 'src/app/models/id-value';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
@@ -106,10 +106,10 @@ export class ViajeReactiveFormComponent implements OnInit, OnChanges{
   * guarda y resetea el  formulario
   */
   guardar(formValue: Viaje): void {
+    console.log(formValue);
     if (formValue){
     this.viajeChanged.emit(formValue);
     this.nuevoViaje();
-    console.log(formValue);
     }
   }
 

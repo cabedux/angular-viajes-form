@@ -1,0 +1,2 @@
+<app-loading [hidden]="!loading"></app-loading>
+<app-viaje-listado [viajes]="viajes" (viajeClick)="cargarViajeById($event)" (deleteViajeClick)="deleteViaje($event)"></app-viaje-listado>

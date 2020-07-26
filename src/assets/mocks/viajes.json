@@ -2,17 +2,17 @@
     {
       "id": "93bbcd93-8e0d-45a6-ba2b-8f3fb3b5adde",
       "tripName": "nisi minim reprehenderit",
-      "trtripType": "Tipo 2",
+      "tripType": "3",
       "tripDestination": "ea",
       "plazas": 48,
       "isVisible": false,
-      "estado": 4,
+      "estado": 6,
       "fechaDeSalida": "Sat Jun 28 2014 23:21:18 GMT+0000"
     },
     {
       "id": "ea8a1c1a-7c5f-4c15-9e7d-7113e716f7f9",
       "tripName": "id ex enim",
-      "trtripType": "Tipo 1",
+      "tripType": "4",
       "tripDestination": "aliqua",
       "plazas": 41,
       "isVisible": true,
@@ -22,7 +22,7 @@
     {
       "id": "68f29b8c-d222-4f9c-8c18-55c44c630e11",
       "tripName": "duis id mollit",
-      "trtripType": "Tipo 3",
+      "tripType": 2,
       "tripDestination": "pariatur",
       "plazas": 25,
       "isVisible": false,
@@ -32,7 +32,7 @@
     {
       "id": "3e819330-1dcc-42fc-a7ea-0710d2a5dee0",
       "tripName": "commodo laborum dolor",
-      "trtripType": "Tipo 1",
+      "tripType": 1,
       "tripDestination": "id",
       "plazas": 50,
       "isVisible": true,
@@ -42,7 +42,7 @@
     {
       "id": "fa360664-c9f1-4a06-b698-e72706cd95eb",
       "tripName": "ad elit irure",
-      "trtripType": "Tipo 1",
+      "tripType": 6,
       "tripDestination": "aliquip",
       "plazas": 29,
       "isVisible": false,

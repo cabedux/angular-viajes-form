@@ -9,44 +9,34 @@ import { map, catchError } from 'rxjs/operators';
 @Injectable({providedIn: 'root'})
 export class ViajesService {
 
-  private viajes: Viaje[] = [];
+
 
   constructor( private http: HttpClient){
-    this.viajes.push(new Viaje({
-      id: uuid(),
-      tripName: 'Grecia',
-      tripType: ViajeTipo.Cultural,
-      tripDestination: 'Grecia',
-      tripDuration: '10',
-      plazas: '10',
-      isVisible: true,
-      estado: ViajeEstado.Cancelado,
-      fechaDeSalida: '2020-09-18'
-    }));
+
   }
 
   /*
   * Guardar/actualizar viaje
   */
-  guardar(viaje: Viaje): void{
-    if (viaje){
-      if (viaje.id){
-        const idx = this.viajes.findIndex(v => v.id === viaje.id);
+  // guardar(viaje: Viaje): void{
+  //   if (viaje){
+  //     if (viaje.id){
+  //       const idx = this.viajes.findIndex(v => v.id === viaje.id);
 
-        if (idx >= 0){
-          this.viajes[idx] = viaje;
-        }
-      }
-      else{
-        viaje.id = uuid();
-        this.viajes.push(viaje);
-      }
-    }
-  }
+  //       if (idx >= 0){
+  //         this.viajes[idx] = viaje;
+  //       }
+  //     }
+  //     else{
+  //       viaje.id = uuid();
+  //       this.viajes.push(viaje);
+  //     }
+  //   }
+  // }
 
   guardar2(v: Viaje): Observable<Viaje> {
-    const urlPost = 'http://localhost:8080/viajes';
-    const urlPut = `http://localhost:8080/viajes/${v.id}`;
+    const urlPost = 'https://5f1c645f254cec0016082bdf.mockapi.io/api/viajes';
+    const urlPut = `https://5f1c645f254cec0016082bdf.mockapi.io/api/viajes/${v.id}`;
     if (v.id) {
         return this.http.put<any>(urlPut, v).pipe(
             map((x: any) => {
@@ -107,6 +97,7 @@ export class ViajesService {
   getEstados(): Observable<IdValue[]>{
     const url = `/assets/mocks/estados.json`;
 
+    // en este caso no seria necesario el pipe, lo datos ya nos llegan bien formateados
     return this.http.get<IdValue[]>(url).pipe(
       map(x => {
         return x.map(item => ({id: item.id, value: item.value}));
@@ -116,11 +107,11 @@ export class ViajesService {
   }
 
   /*
-  * Obtener la lista de viajes
+  * Obtener la lista de viajes, tenemos mokeado en json y en servidor con api
   */
   getViajesList(): Observable<Viaje[]>{
-      const url = `/assets/mocks/viajes.json`;
-      // const url = `http://localhost:8080/viajes/${id}`;
+     // const url = `/assets/mocks/viajes.json`;
+      const url = 'https://5f1c645f254cec0016082bdf.mockapi.io/api/viajes';
       return this.http.get<any>(url).pipe(
         map((data: any[]) => {
           return data.map(c => new Viaje(c));
@@ -131,20 +122,20 @@ export class ViajesService {
   * Obtener un viaje por id, funcion asincrona con pipe(tuberia)
   */
  getViaje(id: string): Observable<Viaje> {
-    const url = `/assets/mocks/viaje-${id}.json`;
-    // const url = `http://localhost:8080/viajes/${id}`;
+    // const url = `/assets/mocks/viaje-${id}.json`;
+    const url = `https://5f1c645f254cec0016082bdf.mockapi.io/api/viajes/${id}`;
 
     // Cabecera con el token
-    const headers: HttpHeaders = new HttpHeaders({
-      Authetication: 'Bearer AsvaIzaSyDOfT_BO81aEZScosfTYMruJobmpjqNeEk'
-    });
+    // const headers: HttpHeaders = new HttpHeaders({
+    //   Authetication: 'Bearer AsvaIzaSyDOfT_BO81aEZScosfTYMruJobmpjqNeEk'
+    // });
 
-    return this.http.get<any>(url, { headers }).pipe(
+    // return this.http.get<any>(url, { headers }).pipe(
+    return this.http.get<any>(url).pipe(
       map((data: any) => {
         return new Viaje(data);
       }),
-      catchError((e) => {
-        console.error(e);
+      catchError(() => {
         console.error('Ha ocurrido un error');
         return of(null);
       }));
@@ -152,40 +143,39 @@ export class ViajesService {
 
   // vas a obtener como resultado una tuberia en la que en cualquier momento
   // te puede llegar un observable
-  getViaje2(id: string): Observable<Viaje> {
-    const url = `http://localhost:8080/viajes/${id}`;
-    let newViaje: Viaje;
+  // getViaje2(id: string): Observable<Viaje> {
+  //   const url = `http://localhost:8080/viajes/${id}`;
+  //   let newViaje: Viaje;
 
-    // el metodo pipe encadena operadores que realizan transformaciones
-    // configuro una peticion http y aplico transformaciones
-    return this.http.get<any>(url).pipe(
-      map((data: any) => {
-        const viaje = new Viaje(data);
-        viaje.tripName = 'Cambiado';
-        return viaje;
-      }),
-      map((dataViaje: Viaje) => {
-        dataViaje.estado = ViajeEstado.Abierto;
-        newViaje = dataViaje;
-        return dataViaje;
-      })
-      );
+  //   // el metodo pipe encadena operadores que realizan transformaciones
+  //   // configuro una peticion http y aplico transformaciones
+  //   return this.http.get<any>(url).pipe(
+  //     map((data: any) => {
+  //       const viaje = new Viaje(data);
+  //       viaje.tripName = 'Cambiado';
+  //       return viaje;
+  //     }),
+  //     map((dataViaje: Viaje) => {
+  //       dataViaje.estado = ViajeEstado.Abierto;
+  //       newViaje = dataViaje;
+  //       return dataViaje;
+  //     })
+  //     );
 
       // este viaje sera siempre undefined porque se devolvera antes que se resuelva el get
       // return newViaje;
-  }
+ // }
 
 
-  deleteViaje(id: string): Observable<Viaje>{
-    const url = `/assets/mocks/viaje-${id}.json`;
-    // const url = `http://localhost:8080/viajes/${id}`;
+  deleteViaje(id: string): Observable<boolean> {
+    console.log(id);
+    // const url = `/assets/mocks/viaje-${id}.json`;
+    const url = `https://5f1c645f254cec0016082bdf.mockapi.io/api/viajes/${id}`;
     return this.http.delete<any>(url).pipe(
-     catchError((e) => {
-       console.error(e);
+     catchError(() => {
        console.error('Ha ocurrido un error');
        return of(false);
-     })
-      );
+     }));
   }
 }
 

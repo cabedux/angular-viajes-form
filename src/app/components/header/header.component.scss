@@ -1,0 +1,16 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    background-color: lightslategrey;
+    margin: 0;
+    padding: 10px;
+  }
+  
+  .menu-item {
+    margin-right: 20px;
+    color: white;
+    &:hover {
+      cursor: pointer;
+      font-weight: bold;
+    }
+  }

@@ -16,7 +16,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let viaje of viajes"  (click)="setViaje(viaje)">
+                  <tr *ngFor="let viaje of viajes">
                     <th scope="row">#{{viaje.id}}</th>
                     <td>{{viaje.tripName}}</td>
                     <td>{{viaje.tripType | tipo}}</td>
@@ -25,6 +25,7 @@
                     <td>{{viaje.plazas}}</td>
                     <td>{{viaje.estado | estado}}</td>
                     <td>{{viaje.fechaDeSalida | date: 'fullDate' :'':'es' | uppercase}}</td>
+                    <td><button type="button" (click)="setViaje(viaje)">Edit</button></td>
                     <td><button type="button" (click)="deleteViaje(viaje.id)">Delete</button></td>
                   </tr>
                 </tbody>
