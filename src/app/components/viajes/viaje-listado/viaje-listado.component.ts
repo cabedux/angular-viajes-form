@@ -7,7 +7,7 @@ import { Viaje } from 'src/app/models/viaje';
   styleUrls: ['./viaje-listado.component.scss']
 })
 export class ViajeListadoComponent implements OnInit {
-  viaje: Viaje;
+
   @Input() viajes: Viaje[] = [];
 
   @Output() viajeClick = new EventEmitter<string>(false);

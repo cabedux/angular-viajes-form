@@ -1,19 +1,3 @@
-export enum ViajeEstado{
-    Abierto = 1,
-    Cerrado = 2,
-    Cancelado = 3,
-    Postpuesto = 4
-}
-
-export enum ViajeTipo{
-    Playa = 1,
-    Relax = 2,
-    Deportivo = 3,
-    Rural = 4,
-    Cultural = 5,
-    Ocio = 6
-}
-
 export class Viaje{
     id: string;
     tripName: string;
@@ -37,3 +21,20 @@ export class Viaje{
         this.fechaDeSalida = item?.fechaDeSalida ? new Date(item.fechaDeSalida) : null;
     }
 }
+
+export enum ViajeEstado{
+    Abierto = 1,
+    Cerrado = 2,
+    Cancelado = 3,
+    Postpuesto = 4
+}
+
+export enum ViajeTipo{
+    Playa = 1,
+    Relax = 2,
+    Deportivo = 3,
+    Rural = 4,
+    Cultural = 5,
+    Ocio = 6
+}
+

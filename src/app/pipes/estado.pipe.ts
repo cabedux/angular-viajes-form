@@ -6,7 +6,7 @@ import { ViajeEstado } from '../models/viaje';
 })
 export class EstadoPipe implements PipeTransform {
   transform(value: ViajeEstado): string {
-    // con el +value, evitas que compare el tipo
+    // con el +value, evitas que compare el tipo de dato en el switch
     switch (+value){
       case ViajeEstado.Abierto:
         return 'Abierto';

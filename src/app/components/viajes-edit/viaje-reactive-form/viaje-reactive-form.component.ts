@@ -18,7 +18,7 @@ export class ViajeReactiveFormComponent implements OnInit, OnChanges{
    // La referencia de memoria del input que nos llega es nueva o no se entera angular
    // Los set/get , se generar cuando hay que tratar con los datos.
   @Input() set viaje(value: Viaje) {
-    console.log('Este mensaje solo se muestra cuando la ref del input viaje cambia');
+    // console.log('Este mensaje solo se muestra cuando la ref del input viaje cambia');
     if (value){
       this.elFormulario.patchValue(value);
     }
@@ -60,7 +60,7 @@ export class ViajeReactiveFormComponent implements OnInit, OnChanges{
     this.buildFormulario(this.fb);
   }
 
-   // No se suele usar, su fincionalidad se puede implementar con subcribe
+   // No se suele usar, su funcionalidad se puede implementar con subcribe
    ngOnChanges(changes: SimpleChanges): void{}
 
 
@@ -130,7 +130,7 @@ export class ViajeReactiveFormComponent implements OnInit, OnChanges{
   }
 
   /*
-  * Validador de un campo del formulario
+  * Validador personalizado de un campo del formulario -afecta al campo que se asigne en el html
   */
   destinoNoValido(control: FormControl): { [s: string]: boolean } {
   if (control.value?.toLowerCase().indexOf('roma') >= 0) {

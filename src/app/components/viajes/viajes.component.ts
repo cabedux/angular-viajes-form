@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 export class ViajesComponent implements OnInit {
 
   loading = false;
-  viaje: Viaje;
   viajes: Viaje[] = [];
 
   constructor(private viajesService: ViajesService, private router: Router) { }
@@ -19,15 +18,20 @@ export class ViajesComponent implements OnInit {
   ngOnInit(): void {
     this.cargarViajes();
   }
- cargarViajeById(id: string): void {
+
+  /*
+  * Redigir a la pagina de edicion de un viaje pasando una id como parametro
+  */
+  cargarViajeById(id: string): void {
     if (id) {
       this.router.navigate(['/viajes-edit', id]);
-      // this.viajesService.getViaje(id).subscribe(viaje => {
-      //   this.viaje = viaje;
-      // });
     }
   }
 
+  /*
+  * Eliminar un viaje llamando al sercicio correspondiente
+  * y se comprueba si ha podido ser eliminado o no
+  */
   deleteViaje(id: string): void{
     if (id) {
       this.viajesService.deleteViaje(id).subscribe(viaje => {
@@ -42,6 +46,10 @@ export class ViajesComponent implements OnInit {
     }
   }
 
+  /*
+  * Carga el listado de viajes llamando al sercicio correspondiente
+  * Loading: para mostrar/ocultar el icono de loading
+  */
   private cargarViajes(): void {
     this.loading = true;
     this.viajesService.getViajesList().subscribe(viaje => {

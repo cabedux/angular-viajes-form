@@ -15,12 +15,20 @@ export class ViajesEditComponent implements OnInit {
   tiposDeViajes: IdValue[] = [];
   viajeId: any;
 
+  /*
+  * Recoge la id de los parametros de la url
+  */
   constructor(private viajesService: ViajesService, private router: Router, aRouter: ActivatedRoute) {
     aRouter.params.subscribe(params => {
       this.viajeId = params?.id || null;
     });
   }
-
+  /*
+  * Carga los tipos de viajes llamando al servicio correspondiente
+  * Carga los estados de viajes llamando al servicio correspondiente
+  * Si llegada ID ->Carga los datos de un viaje llamando al servicio correspondiente
+  * Sino --> Crea un viaje vacio
+  */
   ngOnInit(): void {
     this.viajesService.getTiposDeViajes().subscribe(x => {
       if (x){
@@ -45,12 +53,13 @@ export class ViajesEditComponent implements OnInit {
   }
 
   /*
-  * Imprime en consola los datos de un viaje
+  * Llama al servicio para guardar los datos de un viaje y vuelve al listado
   */
  guardar(viaje: Viaje): void{
-   this.viajesService.guardar2(viaje).subscribe(x => {    if (x){
-     this.viaje = x;
-     this.router.navigate(['/viajes']);
+   this.viajesService.guardar2(viaje).subscribe(x => {
+     if (x){
+      this.viaje = x;
+      this.router.navigate(['/viajes']);
     }
   });
  }
